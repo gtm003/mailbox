@@ -1,4 +1,5 @@
 import faker from '@faker-js/faker';
+import { orderBy } from 'lodash';
 
 import { NUMBER_OF_LETTERS } from '../constants/constants';
 import { Folder } from '../ts/enums/enums';
@@ -15,10 +16,10 @@ for (let i = 0; i < NUMBER_OF_LETTERS; i++) {
     folder: faker.random.arrayElement(folders),
     author: `${faker.name.firstName()} ${faker.name.lastName()}`,
     email: `${faker.name.firstName()}_${faker.name.lastName()}@domen.com`,
-    text: faker.lorem.sentence(200),
+    text: faker.lorem.sentence(250),
     date: faker.date.past(),
     isRead: faker.datatype.boolean(),
   });
 }
 
-export default letters;
+export default orderBy(letters, ['date'], ['desc']);
