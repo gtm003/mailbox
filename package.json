@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.6.2",
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.27",
-    "@types/react": "^18.0.5",
-    "@types/react-dom": "^18.0.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
@@ -20,7 +25,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npm run stylelint && npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run stylelint:fix && npm run eslint:fix && npm run prettier:fix",
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx src/ --color",
+    "eslint:fix": "eslint --ext .js,.jsx,.ts,.tsx src/ --color --fix",
+    "stylelint": "stylelint src/**/*.scss",
+    "stylelint:fix": "stylelint src/**/*.scss --fix",
+    "precommit": "lint-staged",
+    "prettier:check": "prettier --check src/**/*.{js,jsx,json,ts,tsx}",
+    "prettier:fix": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
+    "husky:init": "husky install && husky add .husky\\pre-commit \"npm run precommit\""
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +53,29 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.1.2",
+    "@types/jest": "^27.4.1",
+    "@types/material-ui": "^0.21.12",
+    "@types/node": "^17.0.25",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
+    "@types/react-router-dom": "^5.3.3",
+    "node-sass": "^7.0.1",
+    "postcss-scss": "^4.0.2",
+    "prettier": "^2.6.2",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.scss": [
+      "stylelint --fix"
     ]
   }
 }
