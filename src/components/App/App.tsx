@@ -1,15 +1,15 @@
-import { Container } from '@mui/material';
 import React from 'react';
 
-import { Navigation } from '../Layout/Navigation/Navigation';
-import { Letters } from '../Letters/Letters';
+import { Table } from '../../Table/Table';
+import { Layout } from '../Layout/Layout';
 
 const App: React.FC = (): JSX.Element => {
   return (
-    <Container>
-      <Navigation />
-      <Letters />
-    </Container>
+    <div>
+      <Layout>
+        <Table />
+      </Layout>
+    </div>
   );
 };
 
