@@ -1,20 +1,24 @@
+import data from '../../data/data';
 import { Folder } from '../../ts/enums/enums';
 
 export interface FolderState {
   name: string;
-  letters: number[];
+  letterIds: number[];
 }
 
 const initialState = {
   current: Folder.Inbox as string,
   defaultFolders: [
-    { name: Folder.Inbox, letters: [] },
-    { name: Folder.Sent, letters: [] },
-    { name: Folder.Drafts, letters: [] },
-    { name: Folder.Deleted, letters: [] },
-    { name: Folder.Spam, letters: [] },
+    { name: Folder.Inbox, letterIds: [] },
+    { name: Folder.Sent, letterIds: [] },
+    { name: Folder.Drafts, letterIds: [] },
+    { name: Folder.Deleted, letterIds: [] },
+    { name: Folder.Spam, letterIds: [] },
   ],
-  customFolders: [{ name: 'New Folder', letters: [] }] as FolderState[],
+  customFolders: [] as FolderState[],
+  readLetterIds: data
+    .filter((letter) => letter.isRead)
+    .map((letter) => letter.id),
 };
 
 export default initialState;

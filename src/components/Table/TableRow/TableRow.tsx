@@ -1,15 +1,20 @@
 import { Box, Card, Typography } from '@mui/material';
+import classNames from 'classnames';
 import React from 'react';
 
-import { Letter } from '../../ts/models/letter.model';
+import { Letter } from '../../../ts/models/letter.model';
 
 import styles from './TableRow.module.scss';
 
 interface TableRowProps {
   letter: Letter;
+  isRead: boolean;
 }
 
-export const TableRow: React.FC<TableRowProps> = ({ letter }): JSX.Element => {
+export const TableRow: React.FC<TableRowProps> = ({
+  letter,
+  isRead,
+}): JSX.Element => {
   const { author, text, date } = letter;
 
   const formatDate = (date: Date) => {
@@ -30,7 +35,12 @@ export const TableRow: React.FC<TableRowProps> = ({ letter }): JSX.Element => {
   };
 
   return (
-    <Card className={styles.container}>
+    <Card
+      className={classNames({
+        [styles.container]: true,
+        [styles.bold]: !isRead,
+      })}
+    >
       <Box>
         <Typography className={styles.name}>{author}</Typography>
       </Box>

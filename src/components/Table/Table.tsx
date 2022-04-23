@@ -12,9 +12,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { filter, chunk } from 'lodash';
 import React, { useState } from 'react';
 
-import data from '../data/data';
-import { useAppSelector } from '../hooks/useAppSelector';
-import usePagination from '../hooks/usePagination';
+import data from '../../data/data';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import usePagination from '../../hooks/usePagination';
 
 import { TableRow } from './TableRow/TableRow';
 
@@ -22,6 +22,9 @@ import styles from './Table.module.scss';
 
 export const Table: React.FC = (): JSX.Element => {
   const folder = useAppSelector((state) => state.folders.current);
+  const readLetterIds = useAppSelector((state) => state.folders.readLetterIds);
+
+  console.log(readLetterIds);
 
   const letters = filter(data, ['folder', folder]);
   const [lettersPerPage, setLettersPerPage] = useState(20);
@@ -85,7 +88,7 @@ export const Table: React.FC = (): JSX.Element => {
       <Box className={styles.container}>
         {LettersChunk.length ? (
           LettersChunk[page - 1].map((letter) => (
-            <TableRow key={letter.id} letter={letter}></TableRow>
+            <TableRow key={letter.id} letter={letter} isRead={readLetterIds.includes(letter.id)}></TableRow>
           ))
         ) : (
           <Typography>В этой папке нет писем</Typography>

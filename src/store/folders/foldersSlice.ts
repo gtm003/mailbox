@@ -17,7 +17,7 @@ export const foldersSlice = createSlice({
         if (action.payload[0] === folder.name) {
           return {
             name: action.payload[1],
-            letters: folder.letters,
+            letterIds: folder.letterIds,
           };
         }
 

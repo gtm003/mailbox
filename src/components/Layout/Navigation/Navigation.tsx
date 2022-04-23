@@ -47,10 +47,10 @@ export const Navigation: React.FC = () => {
     setIsCreate(true);
   };
   const createFolderInStore = (folderName: string) => {
-    const letters: number[] = [];
+    const letterIds: number[] = [];
     const folder = {
       name: folderName,
-      letters: letters,
+      letterIds: letterIds,
     };
 
     dispatch(createFolder(folder));
@@ -71,7 +71,7 @@ export const Navigation: React.FC = () => {
         {!isCreate ? (
           <Button
             className={styles.createBtn}
-            variant="outlined"
+            variant="contained"
             onClick={onClickCreateFolderBtn}
           >
             создать папку

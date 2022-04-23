@@ -1,4 +1,4 @@
-@import "../../assets/styles/colors.scss";
+@import "../../../assets/styles/colors.scss";
 
 .container {
   display: flex;
@@ -8,12 +8,17 @@
   z-index: 1;
   border-radius: 0% !important;
   border-bottom: 1px solid $grey500;
-  font-weight: bold !important;
 
   &:hover {
     position: relative;
     box-shadow: 0 5px 5px $grey500;
     z-index: 2;
+  }
+}
+
+.bold {
+  p {
+    font-weight: 700 !important;
   }
 }
 

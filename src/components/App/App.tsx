@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Table } from '../../Table/Table';
 import { Layout } from '../Layout/Layout';
+import { Table } from '../Table/Table';
 
 const App: React.FC = (): JSX.Element => {
   return (
