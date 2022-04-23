@@ -13,20 +13,16 @@ import { filter, chunk } from 'lodash';
 import React, { useState } from 'react';
 
 import data from '../data/data';
+import { useAppSelector } from '../hooks/useAppSelector';
 import usePagination from '../hooks/usePagination';
-import { Folder } from '../ts/enums/enums';
 
 import { TableRow } from './TableRow/TableRow';
 
 import styles from './Table.module.scss';
 
-interface TableProps {
-  folder?: Folder;
-}
+export const Table: React.FC = (): JSX.Element => {
+  const folder = useAppSelector((state) => state.folders.current);
 
-export const Table: React.FC<TableProps> = ({
-  folder = Folder.Inbox,
-}): JSX.Element => {
   const letters = filter(data, ['folder', folder]);
   const [lettersPerPage, setLettersPerPage] = useState(20);
   const LettersChunk = chunk(letters, lettersPerPage);
@@ -87,9 +83,13 @@ export const Table: React.FC<TableProps> = ({
         </Box>
       </Box>
       <Box className={styles.container}>
-        {LettersChunk[page - 1].map((letter) => (
-          <TableRow key={letter.id} letter={letter}></TableRow>
-        ))}
+        {LettersChunk.length ? (
+          LettersChunk[page - 1].map((letter) => (
+            <TableRow key={letter.id} letter={letter}></TableRow>
+          ))
+        ) : (
+          <Typography>В этой папке нет писем</Typography>
+        )}
       </Box>
     </Box>
   );

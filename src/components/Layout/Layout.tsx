@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import { Letters } from '../Letters/Letters';
-
 import { Navigation } from './Navigation/Navigation';
 
 import styles from './Layout.module.scss';
