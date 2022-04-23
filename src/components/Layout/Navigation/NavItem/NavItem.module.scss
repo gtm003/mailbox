@@ -1,0 +1,55 @@
+@import "../../../../assets/styles/colors.scss";
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 230px;
+  overflow: hidden;
+
+  .actions {
+    position: absolute;
+    padding: 0 !important;
+    right: -90px;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .actions {
+      right: 0;
+      transition: right 0.3s ease 0s;
+    }
+  }
+}
+
+.folder {
+  border-radius: 0 !important;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  &:hover {
+    background: $grey300;
+  }
+}
+
+.active {
+  background: $grey300 !important;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.name {
+  padding-left: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
