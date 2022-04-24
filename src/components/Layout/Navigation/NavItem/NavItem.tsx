@@ -12,6 +12,7 @@ import {
   deleteFolder,
   renameFolder,
 } from '../../../../store/folders/foldersSlice';
+import { FolderState } from '../../../../store/folders/initialState';
 import { CustomInput } from '../../../ui-kit/CustomInput/CustomInput';
 
 import styles from './NavItem.module.scss';
@@ -25,6 +26,8 @@ interface NavItemProps {
 export const NavItem: React.FC<NavItemProps> = ({ name, path, icon }) => {
   const [isEdit, setIsEdit] = useState(false);
   const currentFolder = useAppSelector((state) => state.folders.current);
+  const folders = useAppSelector((state) => state.folders.folders);
+  const existedNames = folders.map((folder: FolderState) => folder.name);
   const dispatch = useAppDispatch();
   const onClickFolder = () => {
     dispatch(changeCurrentFolder(name));
@@ -44,7 +47,11 @@ export const NavItem: React.FC<NavItemProps> = ({ name, path, icon }) => {
   if (isEdit) {
     return (
       <Box>
-        <CustomInput defaultValue={name} updateStore={changeName} />
+        <CustomInput
+          defaultValue={name}
+          updateStore={changeName}
+          existedNames={existedNames}
+        />
       </Box>
     );
   }

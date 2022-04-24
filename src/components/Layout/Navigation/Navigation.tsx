@@ -11,10 +11,12 @@ import { CustomInput } from '../../ui-kit/CustomInput/CustomInput';
 import { NavItem } from './NavItem/NavItem';
 
 import styles from './Navigation.module.scss';
+import { FolderState } from '../../../store/folders/initialState';
 
 export const Navigation: React.FC = () => {
   const [isCreate, setIsCreate] = useState(false);
   const folders = useAppSelector((state) => state.folders.folders);
+  const existedNames = folders.map((folder: FolderState) => folder.name);
   const customFolders = folders.slice(NAV_ITEMS.length);
   const dispatch = useAppDispatch();
   const onClickCreateFolderBtn = () => {
@@ -45,7 +47,7 @@ export const Navigation: React.FC = () => {
         ))}
       </Box>
       <Box className={styles.navigation}>
-        {customFolders.map((folder) => (
+        {customFolders.map((folder: FolderState) => (
           <NavItem key={folder.name} name={folder.name} path={folder.path} />
         ))}
         {!isCreate ? (
@@ -60,6 +62,7 @@ export const Navigation: React.FC = () => {
           <CustomInput
             defaultValue="Новая папка"
             updateStore={createFolderInStore}
+            existedNames={existedNames}
           />
         )}
       </Box>

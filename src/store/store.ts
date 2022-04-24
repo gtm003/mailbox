@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import foldersReducer from './folders/foldersSlice';
-import lettersReducer from './letters/lettersSlice';
 
 export const store = configureStore({
   reducer: {
     folders: foldersReducer,
-    letters: lettersReducer,
   },
 });
 

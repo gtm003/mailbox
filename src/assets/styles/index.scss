@@ -16,6 +16,10 @@ body {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 :root {
   --toastify-color-info: #0288d1; //info-dark
   --toastify-color-success: #388e3c; //success-dark

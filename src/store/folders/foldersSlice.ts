@@ -10,16 +10,17 @@ export const foldersSlice = createSlice({
   reducers: {
     changeCurrentFolder(state, action: PayloadAction<string>) {
       state.current = action.payload;
+      localStorage.setItem('state', JSON.stringify(state));
     },
     createFolder(state, action: PayloadAction<FolderState>) {
       state.folders = [...state.folders, action.payload];
+      localStorage.setItem('state', JSON.stringify(state));
     },
     renameFolder(state, action: PayloadAction<[string, string]>) {
-      console.log(state.current);
       if (state.current === action.payload[0]) {
         state.current = action.payload[1];
       }
-      state.folders = state.folders.map((folder) => {
+      state.folders = state.folders.map((folder: FolderState) => {
         if (action.payload[0] === folder.name) {
           return {
             ...folder,
@@ -29,15 +30,16 @@ export const foldersSlice = createSlice({
 
         return folder;
       });
+      localStorage.setItem('state', JSON.stringify(state));
     },
     deleteFolder(state, action: PayloadAction<string>) {
-      console.log(state.current);
       if (state.current === action.payload) {
         state.current = Folder.Inbox;
       }
       state.folders = state.folders.filter(
-        (folder) => folder.name !== action.payload
+        (folder: FolderState) => folder.name !== action.payload
       );
+      localStorage.setItem('state', JSON.stringify(state));
     },
   },
 });
