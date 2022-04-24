@@ -1,0 +1,13 @@
+@import "../../assets/styles/colors.scss";
+
+.container {
+  margin: 2rem;
+  padding: 5rem;
+}
+
+.head {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}

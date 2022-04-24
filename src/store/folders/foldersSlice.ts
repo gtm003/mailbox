@@ -41,8 +41,17 @@ export const foldersSlice = createSlice({
       );
       localStorage.setItem('state', JSON.stringify(state));
     },
+    checkAsRead(state, action: PayloadAction<number>) {
+      state.readLetterIds = [...state.readLetterIds, action.payload];
+      localStorage.setItem('state', JSON.stringify(state));
+    },
   },
 });
-export const { changeCurrentFolder, createFolder, deleteFolder, renameFolder } =
-  foldersSlice.actions;
+export const {
+  changeCurrentFolder,
+  createFolder,
+  deleteFolder,
+  renameFolder,
+  checkAsRead,
+} = foldersSlice.actions;
 export default foldersSlice.reducer;
