@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { Folder } from '../../ts/enums/enums';
+
 import initialState, { FolderState } from './initialState';
 
 export const foldersSlice = createSlice({
@@ -10,14 +12,18 @@ export const foldersSlice = createSlice({
       state.current = action.payload;
     },
     createFolder(state, action: PayloadAction<FolderState>) {
-      state.customFolders = [...state.customFolders, action.payload];
+      state.folders = [...state.folders, action.payload];
     },
     renameFolder(state, action: PayloadAction<[string, string]>) {
-      state.customFolders = state.customFolders.map((folder) => {
+      console.log(state.current);
+      if (state.current === action.payload[0]) {
+        state.current = action.payload[1];
+      }
+      state.folders = state.folders.map((folder) => {
         if (action.payload[0] === folder.name) {
           return {
+            ...folder,
             name: action.payload[1],
-            letterIds: folder.letterIds,
           };
         }
 
@@ -25,11 +31,16 @@ export const foldersSlice = createSlice({
       });
     },
     deleteFolder(state, action: PayloadAction<string>) {
-      state.customFolders = state.customFolders.filter(
+      console.log(state.current);
+      if (state.current === action.payload) {
+        state.current = Folder.Inbox;
+      }
+      state.folders = state.folders.filter(
         (folder) => folder.name !== action.payload
       );
     },
   },
 });
-export const { changeCurrentFolder, createFolder, deleteFolder, renameFolder } = foldersSlice.actions;
+export const { changeCurrentFolder, createFolder, deleteFolder, renameFolder } =
+  foldersSlice.actions;
 export default foldersSlice.reducer;

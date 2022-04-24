@@ -2,7 +2,7 @@ import { Box, Card, Typography } from '@mui/material';
 import classNames from 'classnames';
 import React from 'react';
 
-import { Letter } from '../../../ts/models/letter.model';
+import { Letter } from '../../../../ts/models/letter.model';
 
 import styles from './TableRow.module.scss';
 

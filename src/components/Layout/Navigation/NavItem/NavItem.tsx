@@ -1,14 +1,9 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {
-  Box,
-  Card,
-  CardActions,
-  IconButton,
-  Typography,
-} from '@mui/material';
+import { Box, Card, CardActions, IconButton, Typography } from '@mui/material';
 import classNames from 'classnames';
 import React, { ReactNode, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
@@ -23,10 +18,11 @@ import styles from './NavItem.module.scss';
 
 interface NavItemProps {
   name: string;
+  path: string;
   icon?: ReactNode;
 }
 
-export const NavItem: React.FC<NavItemProps> = ({ name, icon }) => {
+export const NavItem: React.FC<NavItemProps> = ({ name, path, icon }) => {
   const [isEdit, setIsEdit] = useState(false);
   const currentFolder = useAppSelector((state) => state.folders.current);
   const dispatch = useAppDispatch();
@@ -45,23 +41,29 @@ export const NavItem: React.FC<NavItemProps> = ({ name, icon }) => {
     setIsEdit(false);
   };
 
+  if (isEdit) {
+    return (
+      <Box>
+        <CustomInput defaultValue={name} updateStore={changeName} />
+      </Box>
+    );
+  }
+
   return (
     <Box className={styles.container}>
-      <Card
-        className={classNames({
-          [styles.folder]: true,
-          [styles.active]: name === currentFolder,
-        })}
-      >
-        {isEdit ? (
-          <CustomInput defaultValue={name} updateStore={changeName} />
-        ) : (
+      <Link to={path}>
+        <Card
+          className={classNames({
+            [styles.folder]: true,
+            [styles.active]: name === currentFolder,
+          })}
+        >
           <Box className={styles.label} onClick={onClickFolder}>
             {icon && <IconButton>{icon}</IconButton>}
             <Typography className={styles.name}>{name}</Typography>
           </Box>
-        )}
-      </Card>
+        </Card>
+      </Link>
       {!icon && (
         <CardActions className={styles.actions}>
           <IconButton onClick={onClickEditBtn}>
