@@ -17,7 +17,7 @@ export const TableRow: React.FC<TableRowProps> = ({
 }): JSX.Element => {
   const { author, text, date } = letter;
 
-  const formatDate = (date: Date) => {
+  const formatDate = (date: string) => {
     const currentYear = new Date().getFullYear();
     const optionsDefault: Intl.DateTimeFormatOptions = {
       year: 'numeric',
@@ -29,9 +29,9 @@ export const TableRow: React.FC<TableRowProps> = ({
       day: 'numeric',
     };
 
-    return currentYear === date.getFullYear()
-      ? date.toLocaleString('ru-Ru', optionsCurrentYear)
-      : date.toLocaleString('ru-Ru', optionsDefault);
+    return currentYear === new Date(date).getFullYear()
+      ? new Date(date).toLocaleString('ru-Ru', optionsCurrentYear)
+      : new Date(date).toLocaleString('ru-Ru', optionsDefault);
   };
 
   return (

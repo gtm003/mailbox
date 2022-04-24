@@ -13,7 +13,7 @@ const getLetterIds = (data: Letter[], folder: string) =>
     .filter((letter: Letter) => letter.folder === folder)
     .map((letter: Letter) => letter.id);
 
-const initialState = {
+const defaultState = {
   current: Folder.Inbox as string,
   folders: Object.values(Folder).map((folder) => ({
     name: folder,
@@ -24,5 +24,8 @@ const initialState = {
     .filter((letter) => letter.isRead)
     .map((letter) => letter.id),
 };
+
+const initialState = JSON.parse(localStorage.state) ?? defaultState;
+//const initialState = defaultState;
 
 export default initialState;

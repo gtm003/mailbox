@@ -6,6 +6,6 @@ export interface Letter {
   author: string;
   email: string;
   text: string;
-  date: Date;
+  date: string;
   isRead: boolean;
 }
