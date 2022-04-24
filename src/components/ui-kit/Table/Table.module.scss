@@ -1,11 +1,13 @@
-@import "../assets/styles/colors.scss";
+@import "../../../assets/styles/colors.scss";
 
 .container {
   background-color: $indigo700;
-  width: calc(98vw - 200px);
+  width: calc(98vw - 230px);
+  border-left: 1px solid $grey500;
 }
 
 .controls {
+  height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,10 +16,10 @@
 
 .select {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
+  width: 200px !important;
 }
 
 .pagination {

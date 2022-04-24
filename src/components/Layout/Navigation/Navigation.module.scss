@@ -1,6 +1,7 @@
 @import "../../../assets/styles/colors.scss";
 
 .container {
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   min-width: 230px;
@@ -8,4 +9,5 @@
 
 .createBtn {
   margin: 1rem 3rem !important;
+  background-color: $grey700 !important;
 }

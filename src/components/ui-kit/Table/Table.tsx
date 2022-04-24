@@ -9,21 +9,25 @@ import {
   Typography,
 } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { filter, chunk } from 'lodash';
+import { chunk } from 'lodash';
 import React, { useState } from 'react';
 
-import data from '../data/data';
-import { useAppSelector } from '../hooks/useAppSelector';
-import usePagination from '../hooks/usePagination';
+import usePagination from '../../../hooks/usePagination';
+import { Letter } from '../../../ts/models/letter.model';
 
 import { TableRow } from './TableRow/TableRow';
 
 import styles from './Table.module.scss';
 
-export const Table: React.FC = (): JSX.Element => {
-  const folder = useAppSelector((state) => state.folders.current);
+interface TableProps {
+  letters: Letter[];
+  readLetterIds: number[];
+}
 
-  const letters = filter(data, ['folder', folder]);
+export const Table: React.FC<TableProps> = ({letters, readLetterIds}): JSX.Element => {
+  //const folder = useAppSelector((state) => state.folders.current);
+  //const readLetterIds = useAppSelector((state) => state.folders.readLetterIds);
+  //const letters = filter(data, ['folder', folder]);
   const [lettersPerPage, setLettersPerPage] = useState(20);
   const LettersChunk = chunk(letters, lettersPerPage);
   const { nextPage, prevPage, page, setPage, totalPages } = usePagination(
@@ -85,7 +89,7 @@ export const Table: React.FC = (): JSX.Element => {
       <Box className={styles.container}>
         {LettersChunk.length ? (
           LettersChunk[page - 1].map((letter) => (
-            <TableRow key={letter.id} letter={letter}></TableRow>
+            <TableRow key={letter.id} letter={letter} isRead={readLetterIds.includes(letter.id)}></TableRow>
           ))
         ) : (
           <Typography>В этой папке нет писем</Typography>
