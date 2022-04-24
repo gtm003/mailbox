@@ -22,10 +22,10 @@ export const TableRow: React.FC<TableRowProps> = ({
   const { author, text, date, id } = letter;
   const dispatch = useAppDispatch();
   const onClickLetter = () => {
-    if(!isRead) {
+    if (!isRead) {
       dispatch(checkAsRead(id));
     }
-  }
+  };
 
   return (
     <Link to={`letter/${id}`} onClick={onClickLetter}>

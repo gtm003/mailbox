@@ -21,15 +21,12 @@ export const Header = () => {
         </IconButton>
         <Box className={styles.header}>
           <Link to="NewLetters">
-            <IconButton
-              size="large"
-              color="inherit"
-            >
+            <IconButton size="large" color="inherit">
               <Badge
                 badgeContent={NUMBER_OF_LETTERS - readLetterIds.length + 1}
                 color="error"
               >
-                <MailIcon className={styles.mailIcon}/>
+                <MailIcon className={styles.mailIcon} />
               </Badge>
             </IconButton>
           </Link>

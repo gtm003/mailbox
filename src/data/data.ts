@@ -20,7 +20,8 @@ for (let i = 0; i < NUMBER_OF_LETTERS; i++) {
     email: `${faker.name.firstName()}_${faker.name.lastName()}@domen.com`,
     text: faker.lorem.sentence(250),
     date: faker.date.past().toString(),
-    isRead: [Folder.Drafts, Folder.Sent].includes(folder) || faker.datatype.boolean(),
+    isRead:
+      [Folder.Drafts, Folder.Sent].includes(folder) || faker.datatype.boolean(),
   });
 }
 

@@ -99,5 +99,15 @@
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*"
+      ],
+      "rules": {
+        "import/named": "off"
+      }
+    }
+  ]
 }

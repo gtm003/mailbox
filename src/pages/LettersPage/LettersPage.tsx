@@ -16,7 +16,11 @@ export const LettersPage: React.FC = () => {
   const letters = data.filter(({ id }) => currentFolder.letterIds.includes(id));
 
   if (!letters.length) {
-    return <Typography mt={10} ml={10} variant='h4'>В этой папке писем нет</Typography>;
+    return (
+      <Typography mt={10} ml={10} variant="h4">
+        В этой папке писем нет
+      </Typography>
+    );
   }
 
   return (

@@ -24,8 +24,13 @@ interface TableProps {
   readLetterIds: number[];
 }
 
-export const Table: React.FC<TableProps> = ({letters, readLetterIds}): JSX.Element => {
-  const sortedLetters = letters.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+export const Table: React.FC<TableProps> = ({
+  letters,
+  readLetterIds,
+}): JSX.Element => {
+  const sortedLetters = letters.sort(
+    (a, b) => Date.parse(b.date) - Date.parse(a.date)
+  );
   const [lettersPerPage, setLettersPerPage] = useState(20);
   const LettersChunk = chunk(sortedLetters, lettersPerPage);
   const { nextPage, prevPage, page, setPage, totalPages } = usePagination(
@@ -87,7 +92,11 @@ export const Table: React.FC<TableProps> = ({letters, readLetterIds}): JSX.Eleme
       <Box className={styles.container}>
         {LettersChunk.length ? (
           LettersChunk[page - 1].map((letter) => (
-            <TableRow key={letter.id} letter={letter} isRead={readLetterIds.includes(letter.id)}></TableRow>
+            <TableRow
+              key={letter.id}
+              letter={letter}
+              isRead={readLetterIds.includes(letter.id)}
+            ></TableRow>
           ))
         ) : (
           <Typography>В этой папке нет писем</Typography>
