@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/cv/static/css/main.915a1812.css",
-    "main.js": "/cv/static/js/main.f9f21a7a.js",
-    "index.html": "/cv/index.html",
-    "main.915a1812.css.map": "/cv/static/css/main.915a1812.css.map",
-    "main.f9f21a7a.js.map": "/cv/static/js/main.f9f21a7a.js.map"
+    "main.css": "/mailbox/static/css/main.915a1812.css",
+    "main.js": "/mailbox/static/js/main.f9f21a7a.js",
+    "index.html": "/mailbox/index.html",
+    "main.915a1812.css.map": "/mailbox/static/css/main.915a1812.css.map",
+    "main.f9f21a7a.js.map": "/mailbox/static/js/main.f9f21a7a.js.map"
   },
   "entrypoints": [
     "static/css/main.915a1812.css",
