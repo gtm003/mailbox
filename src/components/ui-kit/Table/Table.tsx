@@ -1,8 +1,10 @@
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import FirstPageIcon from '@mui/icons-material/FirstPage';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import {
   Box,
-  Button,
+  ButtonGroup,
   FormControl,
   IconButton,
   MenuItem,
@@ -71,23 +73,20 @@ export const Table: React.FC<TableProps> = ({
           {Math.min(page * lettersPerPage, letters.length)}
           &nbsp;из&nbsp;{letters.length}
         </Typography>
-        <Box className={styles.pagination}>
-          {page > 1 && <Button onClick={moveToFirstPage}>{1}</Button>}
-          {page > 1 && (
-            <IconButton size="small" onClick={prevPage}>
-              <ArrowLeftIcon />
-            </IconButton>
-          )}
-          <Button className={styles.active}>{page}</Button>
-          {page < totalPages && (
-            <IconButton size="small" onClick={nextPage}>
-              <ArrowRightIcon />
-            </IconButton>
-          )}
-          {page < totalPages && (
-            <Button onClick={moveToLastPage}>{totalPages}</Button>
-          )}
-        </Box>
+        <ButtonGroup className={styles.pagination}>
+          <IconButton onClick={moveToFirstPage} disabled={page === 1}>
+            <FirstPageIcon />
+          </IconButton>
+          <IconButton onClick={prevPage} disabled={page === 1}>
+            <NavigateBeforeIcon />
+          </IconButton>
+          <IconButton onClick={nextPage} disabled={page === totalPages}>
+            <NavigateNextIcon />
+          </IconButton>
+          <IconButton onClick={moveToLastPage} disabled={page === totalPages}>
+            <LastPageIcon />
+          </IconButton>
+        </ButtonGroup>
       </Box>
       <Box className={styles.container}>
         {LettersChunk.length ? (
