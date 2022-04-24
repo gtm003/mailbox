@@ -6,12 +6,12 @@ import { NAV_ITEMS } from '../../../constants/navItems';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import { createFolder } from '../../../store/folders/foldersSlice';
+import { FolderState } from '../../../store/folders/initialState';
 import { CustomInput } from '../../ui-kit/CustomInput/CustomInput';
 
 import { NavItem } from './NavItem/NavItem';
 
 import styles from './Navigation.module.scss';
-import { FolderState } from '../../../store/folders/initialState';
 
 export const Navigation: React.FC = () => {
   const [isCreate, setIsCreate] = useState(false);

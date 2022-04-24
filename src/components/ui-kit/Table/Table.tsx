@@ -25,11 +25,9 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({letters, readLetterIds}): JSX.Element => {
-  //const folder = useAppSelector((state) => state.folders.current);
-  //const readLetterIds = useAppSelector((state) => state.folders.readLetterIds);
-  //const letters = filter(data, ['folder', folder]);
+  const sortedLetters = letters.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
   const [lettersPerPage, setLettersPerPage] = useState(20);
-  const LettersChunk = chunk(letters, lettersPerPage);
+  const LettersChunk = chunk(sortedLetters, lettersPerPage);
   const { nextPage, prevPage, page, setPage, totalPages } = usePagination(
     lettersPerPage,
     letters.length

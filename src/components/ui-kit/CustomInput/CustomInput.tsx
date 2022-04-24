@@ -1,6 +1,6 @@
-import { Input, Box, IconButton, TextField } from '@mui/material';
-import React, { ReactNode, useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
+import { Box, IconButton, TextField } from '@mui/material';
+import React, { ReactNode, useState } from 'react';
 
 import styles from './CustomInput.module.scss';
 

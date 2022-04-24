@@ -26,10 +26,10 @@ export const Header = () => {
               color="inherit"
             >
               <Badge
-                badgeContent={NUMBER_OF_LETTERS - readLetterIds.length}
+                badgeContent={NUMBER_OF_LETTERS - readLetterIds.length + 1}
                 color="error"
               >
-                <MailIcon />
+                <MailIcon className={styles.mailIcon}/>
               </Badge>
             </IconButton>
           </Link>
