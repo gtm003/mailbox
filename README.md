@@ -6,6 +6,9 @@
 
 #### Additional features
 * сlicking on a table row opens the email for viewing
+* automatic changing letter status after opening
 * saving user settings to localStorage
 * deploy application on github.io
+* save state in redux
+* implement routing
 
