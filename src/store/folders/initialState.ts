@@ -25,7 +25,9 @@ const defaultState = {
     .map((letter) => letter.id),
 };
 
-const initialState =localStorage.state ? JSON.parse(localStorage.state) : defaultState;
+const initialState = localStorage.state
+  ? JSON.parse(localStorage.state)
+  : defaultState;
 //const initialState = defaultState;
 
 export default initialState;
