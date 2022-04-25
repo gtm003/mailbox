@@ -21,9 +21,15 @@ interface NavItemProps {
   name: string;
   path: string;
   icon?: ReactNode;
+  numberOfUnreadLetters: number;
 }
 
-export const NavItem: React.FC<NavItemProps> = ({ name, path, icon }) => {
+export const NavItem: React.FC<NavItemProps> = ({
+  name,
+  path,
+  icon,
+  numberOfUnreadLetters,
+}) => {
   const [isEdit, setIsEdit] = useState(false);
   const currentFolder = useAppSelector((state) => state.folders.current);
   const folders = useAppSelector((state) => state.folders.folders);
@@ -67,8 +73,25 @@ export const NavItem: React.FC<NavItemProps> = ({ name, path, icon }) => {
         >
           <Box className={styles.label} onClick={onClickFolder}>
             {icon && <IconButton>{icon}</IconButton>}
-            <Typography className={styles.name}>{name}</Typography>
+            <Typography
+              className={classNames({
+                [styles.name]: true,
+                [styles.bold]: numberOfUnreadLetters,
+              })}
+            >
+              {name}
+            </Typography>
           </Box>
+          {Boolean(numberOfUnreadLetters) && (
+            <Typography
+              className={classNames({
+                [styles.name]: true,
+                [styles.bold]: numberOfUnreadLetters,
+              })}
+            >
+              {numberOfUnreadLetters}
+            </Typography>
+          )}
         </Card>
       </Link>
       {!icon && (

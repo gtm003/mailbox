@@ -41,7 +41,7 @@
 }
 
 .label {
-  width: 100%;
+  //width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -52,4 +52,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  //color: $grey700;
+}
+
+.bold {
+  font-weight: 700 !important;
+  //text-shadow: 0 1px 2px #00000099;
 }

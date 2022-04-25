@@ -23,7 +23,7 @@ export const Header = () => {
           <Link to="NewLetters">
             <IconButton size="large" color="inherit">
               <Badge
-                badgeContent={NUMBER_OF_LETTERS - readLetterIds.length + 1}
+                badgeContent={NUMBER_OF_LETTERS - readLetterIds.length}
                 color="error"
               >
                 <MailIcon className={styles.mailIcon} />
