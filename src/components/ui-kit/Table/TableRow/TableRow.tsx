@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, CardActions, Checkbox, Typography } from '@mui/material';
 import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -28,23 +28,34 @@ export const TableRow: React.FC<TableRowProps> = ({
   };
 
   return (
-    <Link to={`letter/${id}`} onClick={onClickLetter}>
-      <Card
-        className={classNames({
-          [styles.container]: true,
-          [styles.bold]: !isRead,
-        })}
-      >
-        <Box>
-          <Typography className={styles.name}>{author}</Typography>
-        </Box>
-        <Box className={styles.preview}>
-          <Typography className={styles.preview}>{text}</Typography>
-        </Box>
-        <Box>
-          <Typography className={styles.date}>{formatDate(date)}</Typography>
-        </Box>
-      </Card>
-    </Link>
+    <Box className={styles.container}>
+      <CardActions className={styles.checkbox}>
+        <Checkbox
+          sx={{
+            '&.Mui-checked': {
+              color: '#616161',
+            },
+          }}
+        />
+      </CardActions>
+      <Link to={`letter/${id}`} onClick={onClickLetter}>
+        <Card
+          className={classNames({
+            [styles.card]: true,
+            [styles.bold]: !isRead,
+          })}
+        >
+          <Box>
+            <Typography className={styles.name}>{author}</Typography>
+          </Box>
+          <Box className={styles.preview}>
+            <Typography className={styles.preview}>{text}</Typography>
+          </Box>
+          <Box>
+            <Typography className={styles.date}>{formatDate(date)}</Typography>
+          </Box>
+        </Card>
+      </Link>
+    </Box>
   );
 };
