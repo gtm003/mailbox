@@ -1,3 +1,6 @@
+import DeleteIcon from '@mui/icons-material/Delete';
+import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
+import ErrorIcon from '@mui/icons-material/Error';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -56,6 +59,17 @@ export const Table: React.FC<TableProps> = ({
   return (
     <Box>
       <Box className={styles.controls}>
+        <ButtonGroup className={styles.pagination}>
+          <IconButton disabled={false}>
+            <DeleteIcon />
+          </IconButton>
+          <IconButton disabled={false}>
+            <ErrorIcon />
+          </IconButton>
+          <IconButton disabled={false}>
+            <DriveFileMoveIcon />
+          </IconButton>
+        </ButtonGroup>
         <FormControl
           className={styles.select}
           variant="standard"

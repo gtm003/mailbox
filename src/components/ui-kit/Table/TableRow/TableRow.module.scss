@@ -1,6 +1,17 @@
 @import "../../../../assets/styles/colors.scss";
 
 .container {
+  position: relative;
+}
+
+.checkbox {
+  position: absolute;
+  margin: 0 !important;
+  top: -0.85rem;
+  z-index: 3;
+}
+
+.card {
   display: flex;
   text-align: center;
   padding: 0.8rem 0;
@@ -24,7 +35,7 @@
 
 .name {
   width: 250px;
-  padding-left: 3rem;
+  padding-left: 5rem;
   text-align: left;
 }
 
